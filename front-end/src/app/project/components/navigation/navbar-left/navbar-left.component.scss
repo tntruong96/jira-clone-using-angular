@@ -1,0 +1,35 @@
+$light-blue: rgb(28, 99, 206);
+.navbarLeft-content {
+    @apply h-screen w-navbarLeft pt-6 pb-5 flex flex-col bg-primary flex-shrink-0;
+  }
+  
+  .logoLink {
+    @apply relative pb-2 flex items-center justify-center; 
+
+    img{
+      max-width: 50px !important;
+    }
+  }
+  .nav-list{
+    @apply flex flex-col justify-center align-middle flex-shrink-0;
+
+    .nav-item{
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 100%;
+      min-height: 42px;
+      
+
+      .nav-icon{
+        @apply w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 select-none transition-colors duration-100 cursor-pointer;
+        &:hover{
+          background-color: $light-blue;
+        }
+      }
+    }
+  }
+ 

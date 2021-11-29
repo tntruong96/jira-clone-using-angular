@@ -1,0 +1,7 @@
+<div class="navigation">
+  <div class="flex flex-row h-full overflow-hidden">
+    <app-navbar-left></app-navbar-left>
+    <app-sidebar [expanded]="expanded"></app-sidebar>
+  </div>
+  <app-resizer (toggleSidebar)="handleToggle($event)" [expanded]="expanded"></app-resizer>
+</div>
