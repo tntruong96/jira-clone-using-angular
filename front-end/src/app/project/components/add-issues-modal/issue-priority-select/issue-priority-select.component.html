@@ -1,0 +1,29 @@
+<nz-select class="w-full" [formControl]="control" [nzCustomTemplate]="defaultValue">
+  <nz-option
+    [nzValue]="issuePriority.value"
+    *ngFor="let issuePriority of issuePriorities"
+    nzCustomContent
+  >
+    <div class="flex flex-row items-center">
+      <hero-icon [name]="issuePriority.icon" [style.color]="issuePriority.color"></hero-icon>
+      <span class="uppercase ml-2 font-semibold">{{ issuePriority.value }}</span>
+    </div>
+  </nz-option>
+  <nz-option>
+    <hero-icon
+      [name]="getIssuePriorityIcon(control.value).icon"
+      [style.color]="getIssuePriorityIcon(control.value).color"
+    ></hero-icon>
+    <span class="uppercase ml-2 font-semibold">{{
+      getIssuePriorityIcon(control.value).value
+    }}</span>
+  </nz-option>
+</nz-select>
+
+<ng-template #defaultValue let-select>
+  <hero-icon
+    [name]="getIssuePriorityIcon(select.nzValue).icon"
+    [style.color]="getIssuePriorityIcon(select.nzValue).color"
+  ></hero-icon>
+  <span class="uppercase ml-2 font-semibold">{{ getIssuePriorityIcon(select.nzValue).value }}</span>
+</ng-template>

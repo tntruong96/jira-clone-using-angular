@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { JIssue } from '../../interface/jira.interface';
+import { JIssue } from '../../interface/issue';
 import { ProjectState, ProjectStore } from './project.store';
 
 @Injectable({

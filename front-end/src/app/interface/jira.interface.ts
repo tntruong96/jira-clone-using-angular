@@ -1,3 +1,6 @@
+import { JIssue } from './issue';
+import { JUser } from './user';
+
 export interface JiraState {
   id: string;
   name: string;
@@ -7,14 +10,11 @@ export interface JiraState {
   createdAt: string;
   updatedAt: string;
   issues: JIssue[];
-  users: Juser[];
+  users: JUser[];
 }
 
-export interface JIssue {
-  status: string;
-  listPosition: string;
+export enum ProjectCategory {
+  SOFTWARE = 'Software',
+  MARKETING = 'Marketing',
+  BUSINESS = 'Business'
 }
-
-export interface Juser {}
-
-export interface ProjectCategory {}

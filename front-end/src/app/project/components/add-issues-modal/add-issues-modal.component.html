@@ -1,1 +1,35 @@
-<p>add-issues-modal works!</p>
+<div class="px-2 py-4">
+  <h2 class="font-semibold text-xl my-2">Create Issue</h2>
+  <form [formGroup]="createForm">
+    <div class="form-group flex flex-col">
+      <label for="type" class="mb-2 font-semibold">Issue Type</label>
+      <app-issue-type-select [control]="fc.type"></app-issue-type-select>
+    </div>
+    <div class="form-group flex flex-col">
+      <label for="priority" class="my-2 font-semibold">Issue Priority</label>
+      <app-issue-priority-select [control]="fc.priority"></app-issue-priority-select>
+    </div>
+    <div class="flex flex-col">
+      <label class="label my-2 font-semibold" for="title">Short summary</label>
+      <input class="form-input" formControlName="title" />
+    </div>
+    <div class="form-group flex flex-col">
+      <label class="label my-2 font-semibold" for="description">Description</label>
+    </div>
+    <div class="form-group flex flex-col">
+      <label class="label my-2 font-semibold" for="reporter">Reporter</label>
+      <app-issue-reporter-select
+        [reporters]="reporter$ | async"
+        [control]="fc.reporter"
+      ></app-issue-reporter-select>
+    </div>
+    <div class="form-group flex flex-col">
+      <label class="label my-2 font-semibold" for="assignees">Assignees</label>
+      <app-issue-assignees-select
+        [assignees]="assignees$ | async"
+        [control]="fc.assignees"
+      ></app-issue-assignees-select>
+    </div>
+      <app-button [class]="'mt-3'" (click)="handleSubmit($event)" [title]="'Submit'"></app-button>
+  </form>
+</div>

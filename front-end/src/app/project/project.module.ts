@@ -17,6 +17,18 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { BoardComponent } from './pages/board/board.component';
 import { FullIssueDetailComponent } from './pages/full-issue-detail/full-issue-detail.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { JiraControlModule } from '@app/jira-control/jira-control.module';
+import { IssueTitleComponent } from './components/issues/issue-title/issue-title.component';
+import { IssueCardComponent } from './components/issues/issue-card/issue-card.component';
+import { IssueModalComponent } from './components/issues/issue-modal/issue-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IssueTypeSelectComponent } from './components/add-issues-modal/issue-type-select/issue-type-select.component';
+import { IssuePrioritySelectComponent } from './components/add-issues-modal/issue-priority-select/issue-priority-select.component';
+import { IssueAssigneesSelectComponent } from './components/add-issues-modal/issue-assignees-select/issue-assignees-select.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { HeroIconsModule, arrowDown, arrowUp, xCircle, check, bookmark } from 'ng-heroicons';
+import { IssueReporterSelectComponent } from './components/add-issues-modal/issue-reporter-select/issue-reporter-select.component';
+import { UserComponent } from './components/issues/user/user.component';
 
 const NzModules = [
   NzIconModule,
@@ -24,7 +36,8 @@ const NzModules = [
   NzDrawerModule,
   NzModalModule,
   NzPopoverModule,
-  NzDividerModule
+  NzDividerModule,
+  NzSelectModule
 ];
 
 @NgModule({
@@ -38,8 +51,24 @@ const NzModules = [
     AddIssuesModalComponent,
     BoardComponent,
     FullIssueDetailComponent,
-    SettingsComponent
+    SettingsComponent,
+    IssueTitleComponent,
+    IssueCardComponent,
+    IssueModalComponent,
+    IssueTypeSelectComponent,
+    IssuePrioritySelectComponent,
+    IssueAssigneesSelectComponent,
+    IssueReporterSelectComponent,
+    UserComponent
   ],
-  imports: [CommonModule, ...NzModules, ProjectRoutingModule]
+  imports: [
+    CommonModule,
+    ...NzModules,
+    ProjectRoutingModule,
+    JiraControlModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HeroIconsModule.withIcons({ arrowDown, arrowUp, check, xCircle, bookmark })
+  ]
 })
 export class ProjectModule {}

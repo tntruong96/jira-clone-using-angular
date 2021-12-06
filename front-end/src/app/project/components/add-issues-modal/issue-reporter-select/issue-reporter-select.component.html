@@ -1,0 +1,9 @@
+<nz-select class="w-full" [formControl]="control" [nzCustomTemplate]="defaultTemplate">
+  <nz-option [nzValue]="reporter.id" nzCustomContent *ngFor="let reporter of reporters">
+    <app-user [user]="reporter"></app-user>
+  </nz-option>
+</nz-select>
+
+<ng-template #defaultTemplate let-selected>
+  <app-user [user]="getReporter(selected.nzValue)" [size]="20"></app-user>
+</ng-template>

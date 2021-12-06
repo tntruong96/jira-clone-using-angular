@@ -23,7 +23,7 @@ export class ProjectService {
 
   getProject() {
     this._http
-      .get<JiraState>(`${this.baseUrl}/project.json`)
+      .get<JiraState>(`${this.baseUrl}/data.json`)
       .pipe(
         setLoading(this._store),
         tap((project) => {

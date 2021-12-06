@@ -7,9 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AvatarComponent implements OnInit {
   @Input() linkAvatar: string;
-  @Input() rounded: boolean = true;
+  @Input() rounded = true;
   @Input() size = 14;
   @Input() className = '';
+  @Input() name = '';
   constructor() {}
 
   ngOnInit(): void {}
@@ -19,7 +20,7 @@ export class AvatarComponent implements OnInit {
       width: `${this.size}px`,
       height: `${this.size}px`,
       'background-image': `url(${this.linkAvatar})`,
-      'boder-radius': this.rounded ? '100%' : '3px'
+      'border-radius': this.rounded ? '100%' : '3px'
     };
   }
 }

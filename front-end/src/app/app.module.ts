@@ -15,12 +15,14 @@ import { JiraControlModule } from './jira-control/jira-control.module';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '../environments/environment';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    NzSpinModule,
     BrowserModule,
     JiraControlModule,
     FormsModule,

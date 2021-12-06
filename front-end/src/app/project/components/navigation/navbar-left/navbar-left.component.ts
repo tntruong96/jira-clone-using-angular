@@ -34,9 +34,18 @@ export class NavbarLeftComponent implements OnInit {
   handleModal = () => {
     this._nzModalService.create({
       nzTitle: '',
-      nzContent: AddIssuesModalComponent
+      nzContent: AddIssuesModalComponent,
+      nzFooter: null,
+      nzWidth: 700
     });
   };
+
+  // createNewIssue = () => {
+  //   const promise = new Promise((resolve,reject) => {
+  //     resolve(data);
+  //   })
+  //   return promise
+  // }
 
   change = (e: Event) => {
     console.log(e);
