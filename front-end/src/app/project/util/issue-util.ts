@@ -15,4 +15,8 @@ export class IssueUtil {
   static getPriorityIcon = (issuePriority: IssuePriorityValue): IssuePriority => {
     return new IssuePriority(issuePriority);
   };
+
+  static randomIssueId = () => {
+    return Math.ceil(Math.random() * 90000).toString();
+  };
 }

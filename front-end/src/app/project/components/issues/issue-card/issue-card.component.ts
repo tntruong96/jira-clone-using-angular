@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { IssuePriorityValue, IssueTypeValue, JIssue } from '@app/interface/issue';
+import { IssueUtil } from '@app/project/util/issue-util';
 
 @Component({
   selector: 'app-issue-card',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./issue-card.component.scss']
 })
 export class IssueCardComponent implements OnInit {
+  @Input() issue: JIssue;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
+  getPrioryIcon = (issuePriory: IssuePriorityValue) => IssueUtil.getPriorityIcon(issuePriory);
+  getTypeIcon = (issueType: IssueTypeValue) => IssueUtil.getTypeIcon(issueType);
 }

@@ -29,6 +29,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { HeroIconsModule, arrowDown, arrowUp, xCircle, check, bookmark } from 'ng-heroicons';
 import { IssueReporterSelectComponent } from './components/add-issues-modal/issue-reporter-select/issue-reporter-select.component';
 import { UserComponent } from './components/issues/user/user.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BoardDndListComponent } from './components/board-dnd/board-dnd-list/board-dnd-list.component';
+import { BoardDndComponent } from './components/board-dnd/board-dnd.component';
+import { QuillModule } from 'ngx-quill';
 
 const NzModules = [
   NzIconModule,
@@ -59,16 +63,20 @@ const NzModules = [
     IssuePrioritySelectComponent,
     IssueAssigneesSelectComponent,
     IssueReporterSelectComponent,
-    UserComponent
+    UserComponent,
+    BoardDndListComponent,
+    BoardDndComponent
   ],
   imports: [
     CommonModule,
     ...NzModules,
     ProjectRoutingModule,
+    DragDropModule,
     JiraControlModule,
     FormsModule,
     ReactiveFormsModule,
-    HeroIconsModule.withIcons({ arrowDown, arrowUp, check, xCircle, bookmark })
+    HeroIconsModule.withIcons({ arrowDown, arrowUp, check, xCircle, bookmark }),
+    QuillModule
   ]
 })
 export class ProjectModule {}

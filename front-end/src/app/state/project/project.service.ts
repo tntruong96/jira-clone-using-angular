@@ -4,8 +4,10 @@ import { ProjectStore } from './project.store';
 import { JiraState } from '../../interface/jira.interface';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { setLoading } from '@datorama/akita';
+import { arrayUpsert, setLoading } from '@datorama/akita';
 import { environment } from '@src/environments/environment';
+import { JIssue } from '@app/interface/issue';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +42,16 @@ export class ProjectService {
         })
       )
       .subscribe();
+  }
+
+  updateIssues(issue: JIssue) {
+    issue.updatedDate = new Date().toISOString();
+    this._store.update((state) => {
+      const issues = arrayUpsert(state.issues, issue.id, issue);
+      return {
+        ...state,
+        issues
+      };
+    });
   }
 }

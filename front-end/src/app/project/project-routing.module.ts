@@ -7,12 +7,21 @@ const routes: Routes = [
   {
     path: '',
     component: ProjectComponent,
+    data: {
+      breadcrumb: 'Project'
+    },
     children: [
       {
         path: 'board',
-        component: BoardComponent
-      },{
-        path: '', redirectTo: 'board' , pathMatch:'full'
+        component: BoardComponent,
+        data: {
+          breadcrum: 'Kanban Board'
+        }
+      },
+      {
+        path: '',
+        redirectTo: 'board',
+        pathMatch: 'full'
       }
     ]
   }

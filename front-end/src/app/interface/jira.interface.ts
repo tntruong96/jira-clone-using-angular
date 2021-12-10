@@ -1,4 +1,4 @@
-import { JIssue } from './issue';
+import { IssueStatus, JIssue } from './issue';
 import { JUser } from './user';
 
 export interface JiraState {
@@ -17,4 +17,15 @@ export enum ProjectCategory {
   SOFTWARE = 'Software',
   MARKETING = 'Marketing',
   BUSINESS = 'Business'
+}
+
+export interface JLane {
+  id: IssueStatus;
+  title: string;
+  issues: JIssue[];
+}
+
+export interface JBreadcrum {
+  title: string;
+  path: string;
 }

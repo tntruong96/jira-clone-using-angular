@@ -1,0 +1,9 @@
+<div class="flex container mt-7 h-full" cdkDropListGroup>
+  <div
+    class="board-dnd-list"
+    app-board-dnd-list
+    [status]="status"
+    *ngFor="let status of issueStatuses"
+    [issues$]="projectQuery.issueByStatusSorted$(status)"
+  ></div>
+</div>

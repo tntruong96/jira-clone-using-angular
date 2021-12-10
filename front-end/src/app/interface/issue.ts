@@ -58,3 +58,10 @@ export const IssuePriorityColor = {
   [IssuePriorityValue.LOW]: '#2D8738',
   [IssuePriorityValue.LOWEST]: '#57A55A'
 };
+
+export const ListPosition = {
+  [IssueStatus.BACKLOG]: 1,
+  [IssueStatus.SELECTED]: 2,
+  [IssueStatus.IN_PROGRESS]: 3,
+  [IssueStatus.DONE]: 4
+};

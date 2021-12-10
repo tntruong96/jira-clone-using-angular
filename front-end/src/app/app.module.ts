@@ -16,6 +16,7 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '../environments/environment';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { QuillModule } from 'ngx-quill';
 
 registerLocaleData(en);
 
@@ -30,7 +31,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule
+    AkitaNgRouterStoreModule,
+    QuillModule.forRoot()
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

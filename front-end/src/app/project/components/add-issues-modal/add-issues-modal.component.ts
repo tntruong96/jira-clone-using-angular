@@ -1,9 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IssuePriorityValue, IssueTypeValue } from '@app/interface/issue';
+import { IssuePriorityValue, IssueStatus, IssueTypeValue, JIssue } from '@app/interface/issue';
 import { JUser } from '@app/interface/user';
+import { quillConfiguraiton } from '@app/project/config/editor';
+import { DateUtil } from '@app/project/util/date-util';
+import { IssueUtil } from '@app/project/util/issue-util';
 import { ProjectQuery } from '@app/state/project/project.query';
+import { ProjectService } from '@app/state/project/project.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -19,7 +24,15 @@ export class AddIssuesModalComponent implements OnInit {
   reporter$: Observable<JUser[]>;
   assignees$: Observable<JUser[]>;
 
-  constructor(private _fb: FormBuilder, private _projectQuery: ProjectQuery) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _projectQuery: ProjectQuery,
+    private _projectService: ProjectService,
+    private _nzModal: NzModalRef
+  ) {}
+
+  editorConfiguration;
+  listPosition;
 
   get fc() {
     return this.createForm?.controls;
@@ -36,6 +49,10 @@ export class AddIssuesModalComponent implements OnInit {
     );
 
     this.assignees$ = this._projectQuery.user$;
+
+    this.getListPosition();
+
+    this.editorConfiguration = quillConfiguraiton;
   }
 
   initForm() {
@@ -50,6 +67,33 @@ export class AddIssuesModalComponent implements OnInit {
   }
 
   handleSubmit = (value) => {
-    console.log(this.createForm);
+    const { reporter, assignees, title, type, priority, description } = this.createForm.value;
+    const newIssue: JIssue = {
+      title,
+      type,
+      priority,
+      updatedDate: DateUtil.getNow(),
+      createdDate: DateUtil.getNow(),
+      id: IssueUtil.randomIssueId(),
+      reporterId: reporter,
+      userIds: assignees,
+      status: IssueStatus.BACKLOG,
+      listPosition: this.listPosition,
+      description,
+      estimate: null,
+      timeSpent: null,
+      timeRemaining: null,
+      projectId: null,
+      comments: []
+    };
+    console.log(newIssue);
+    this._projectService.updateIssues(newIssue);
+    this._nzModal.close();
+  };
+
+  getListPosition = () => {
+    return this._projectQuery
+      .issueByStatusSorted$(IssueStatus.BACKLOG)
+      .subscribe((data) => (this.listPosition = data.length + 1));
   };
 }

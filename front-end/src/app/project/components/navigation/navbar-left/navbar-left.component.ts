@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AddIssuesModalComponent } from '../../add-issues-modal/add-issues-modal.component';
@@ -12,7 +12,11 @@ import { SearchDrawerComponent } from '../../search/search-drawer/search-drawer.
 export class NavbarLeftComponent implements OnInit {
   navItems: NavItem[] = [];
   showPropover: boolean = false;
-  constructor(private _nzModalService: NzModalService, private _nzDrawerService: NzDrawerService) {}
+  constructor(
+    private _nzModalService: NzModalService,
+    private _nzDrawerService: NzDrawerService,
+    private _viewContainerRef: ViewContainerRef
+  ) {}
 
   ngOnInit(): void {
     this.navItems = [
@@ -35,6 +39,7 @@ export class NavbarLeftComponent implements OnInit {
     this._nzModalService.create({
       nzTitle: '',
       nzContent: AddIssuesModalComponent,
+      nzViewContainerRef: this._viewContainerRef,
       nzFooter: null,
       nzWidth: 700
     });

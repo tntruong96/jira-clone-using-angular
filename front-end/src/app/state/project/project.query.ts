@@ -21,7 +21,9 @@ export class ProjectQuery extends Query<ProjectState> {
   issueByStatusSorted$ = (status: string): Observable<JIssue[]> => {
     return this.issues$.pipe(
       map((issues) => {
-        let filterIssues = issues.filter((x) => x.status === status);
+        let filterIssues = issues
+          .filter((x) => x.status === status)
+          .sort((a, b) => a.listPosition - b.listPosition);
 
         return filterIssues;
       })
