@@ -1,0 +1,20 @@
+<div class="flex flex-col">
+  <label class="uppercase font-semibold" for="status">Status</label>
+  <app-button
+    [class]="classBtn"
+    class="w-32 uppercase"
+    nz-dropdown
+    nzTrigger="click"
+    [nzDropdownMenu]="menu"
+    [title]="issue.status"
+  >
+  </app-button>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item (click)="handleChangeStatus(item)" *ngFor="let item of listItem">
+        {{ item }}
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+</div>

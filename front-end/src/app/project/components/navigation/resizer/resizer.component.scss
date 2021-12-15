@@ -1,0 +1,27 @@
+.resizer{
+    width: 24px;
+    height: 100vh;
+    cursor: ew-resize;
+    @apply relative border-l-2 border-gray-300;
+
+    &:hover{
+        @apply border-blue-600;
+
+        .icon{
+            @apply bg-blue-600 rounded-full;
+        }
+    }
+    
+}
+
+.icon {
+    top: 21px;
+    left: -11px;
+    font-size: 20px;
+    cursor:pointer;
+    @apply absolute bg-gray-700 rounded-full text-gray-200 border-solid border-2;
+
+    &:hover{
+        @apply bg-gray-100
+    }
+}

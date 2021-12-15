@@ -1,0 +1,79 @@
+.sidebar{
+    transition: width 1s cubic-bezier(1, 0, 0, 1);
+    @apply h-full relative;
+    
+    .sidebar-content{
+        background-color: rgba(244,245,247, $alpha: 0.5);
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow-x: hidden;
+        min-width: 240px;
+        
+        .header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            .logo{
+               background-image: url(../../../../../assets/Vector/angular-icon.svg);
+               background-size: contain;
+               background-position: center;
+               background-repeat: no-repeat;
+               width: 50px;
+               height: 50px;
+               padding: 1rem 0.25rem;
+            }
+    
+            .project-name{
+                padding: 1rem 0.25rem;
+            
+            }
+        }
+        .body{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 100%;
+            .list-item{
+                width: 100%;
+                min-width: 100%;
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                flex-direction: column;
+                padding: 0px 10px;
+                // overflow: auto;
+    
+    
+                .item{
+                    display: flex;
+                    padding: 10px;
+                    &__logo{
+                        flex: 1 1 auto;
+                    }
+                    &__title{
+                        flex: 1 1 auto;
+                    }
+                }
+    
+                .not-allowed:hover{
+                    cursor: not-allowed;
+                }
+    
+                .divider{
+                    margin: 0;
+                    padding-top: 15px;
+                }
+    
+                .active{
+                    @apply text-textLink bg-backgroundLight
+                }
+            }
+        }
+    }
+
+}

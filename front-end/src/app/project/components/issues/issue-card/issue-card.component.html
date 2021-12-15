@@ -1,0 +1,32 @@
+<div class="card-wrapper">
+  <div class="issue-card" (click)="openIssueDetail(issue.id)">
+    <div class="title">
+      <p>{{ issue.title }}</p>
+    </div>
+    <div class="detail">
+      <div class="detail__left items-center">
+        <div class="p-1 flex">
+          <app-avatar
+            [ngClass]="i >= 1 ? '-ml-1' : ''"
+            [linkAvatar]="link"
+            [size]="30"
+            *ngFor="let link of linkAvatar; index as i"
+          ></app-avatar>
+        </div>
+        <div class="ml-2 p-1">{{ issue.id }}-{{ issue.status }}</div>
+      </div>
+      <div class="flex justify-center items-center">
+        <div class="p-1">
+          <hero-icon [name]="getTypeIcon(issue.type)"></hero-icon>
+        </div>
+        <div class="p-1">
+          <hero-icon
+            [name]="getPrioryIcon(issue.priority).icon"
+            [ngStyle]="{ color: getPrioryIcon(issue.priority).color }"
+          >
+          </hero-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

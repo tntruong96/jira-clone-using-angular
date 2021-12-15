@@ -1,0 +1,48 @@
+<aside class="navbarLeft">
+  <div class="navbarLeft-content">
+    <a class="logoLink">
+      <img clas="logoLink__image" src="../../../../../assets/Vector/jira_logo.svg" alt="Jira" />
+    </a>
+    <div class="nav-list">
+      <div *ngFor="let item of navItems" class="nav-item">
+        <div
+          [nzTooltipTitle]="item.tooltip"
+          nzTooltipPlacement="right"
+          nz-tooltip
+          class="nav-icon"
+          (click)="item.handler()"
+        >
+          <i nz-icon [nzType]="item.icon" nzTheme="outline"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flex-auto"></div>
+    <div class="nav-list">
+      <div class="nav-item">
+        <div class="nav-icon" [nzTooltipTitle]="'Login'" nzTooltipPlacement="right" nz-tooltip>
+          <i nz-icon nzType="user" nzTheme="outline"></i>
+        </div>
+      </div>
+      <!-- <div class="avatar" [nzTooltipTitle]="" nzTooltipPlacement="right" nz-tooltip>
+            <img src="" alt="">
+          </div> -->
+      <div class="nav-item">
+        <a
+          nz-popover
+          nzPopoverPlacement="rightBottom"
+          [(nzPopoverVisible)]="showPropover"
+          [nzPopoverContent]="contentTemplate"
+          (nzPopoverVisibleChange)="change($event)"
+          nzPopoverTrigger="click"
+        >
+          <div class="nav-icon" [nzTooltipTitle]="'About us'" nzTooltipPlacement="right" nz-tooltip>
+            <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+<ng-template #contentTemplate>
+  <p>This is a Jira Clone that was builded by Angular, Ng-Zorro, Akita and Tailwind</p>
+</ng-template>

@@ -1,1 +1,5 @@
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Hello</button>
+<div id="app-frame">
+  <nz-spin class="global-spinner" [nzSpinning]="projectQuery.isLoading$ | async" nzSize="large">
+    <router-outlet></router-outlet>
+  </nz-spin>
+</div>

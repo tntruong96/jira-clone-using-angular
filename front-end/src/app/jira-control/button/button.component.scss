@@ -1,0 +1,91 @@
+
+$primary-color: #007bff;
+$secondary-color: #dbe2e8;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$info-color: #17a2b8;
+$warning-color: #ffc107;
+
+@mixin bg-color ($btn-variant, $background) {
+  $bg-dark: darken($background, 10%);
+  $bg-light: lighten($background, 10%);
+
+  .btn-#{$btn-variant}{
+    color: white;
+    font-weight: 500;
+    background-color: $background;
+
+    &:disabled{
+      cursor: not-allowed;
+      background-color: lighten($background, 30%);
+    }
+
+    &:not(:disabled){
+      &:hover{
+        background: $bg-light;
+      }
+      &:active{
+        background: $bg-dark;
+      }
+      &.active{
+        background: $bg-dark !important;
+      }
+    }
+  }
+}
+
+@include bg-color(primary, $primary-color);
+@include bg-color(success, $success-color);
+@include bg-color(danger, $danger-color );
+
+.btn-secondary {
+  background: $secondary-color;
+  @apply text-textDark font-normal;
+
+  &:not(:disabled){
+    &:hover{
+      @apply bg-backgroundLight;
+    }
+
+    &:active{
+      @apply bg-backgroundLightPrimary;
+      color: $primary-color;
+    }
+  }
+}
+
+.btn-empty{
+  background: white;
+  outline: none;
+  @apply text-textDark;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:not(:disabled) {
+    &:hover {
+      @apply bg-backgroundLight;
+    }
+    &:active {
+      @apply bg-backgroundLightPrimary;
+      color: $primary-color;
+    }
+    &.is-active {
+      background-color: $primary-color;
+      @apply text-textDark;
+    }
+  }
+}
+
+.btn {
+  outline: none;
+  // border: 1px solid #333;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  padding: 7px;
+}
+
+

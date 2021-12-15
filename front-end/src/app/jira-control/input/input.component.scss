@@ -1,0 +1,9 @@
+.textarea{
+    border: none;
+    &::-webkit-resizer{
+        display: none;
+    }
+    &:hover{
+        @apply bg-gray-300 border-gray-300 rounded-sm;
+    }
+}

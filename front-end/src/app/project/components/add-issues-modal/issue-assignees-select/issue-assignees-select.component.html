@@ -1,0 +1,22 @@
+<nz-select
+  [formControl]="control"
+  nzMode="multiple"
+  class="w-full"
+  [nzCustomTemplate]="defaultTemplate"
+  [nzNotFoundContent]="noUserFound"
+  nzNoAnimation
+>
+  <nz-option
+    nzCustomContent
+    *ngFor="let assignee of assignees"
+    [nzValue]="assignee.id"
+    [nzLabel]="assignee.name"
+  >
+    <app-user [user]="assignee"></app-user>
+  </nz-option>
+</nz-select>
+
+<ng-template #defaultTemplate let-selected>
+  <app-user [user]="getAssignee(selected.nzValue)"></app-user>
+</ng-template>
+<ng-template #noUserFound> No user found </ng-template>

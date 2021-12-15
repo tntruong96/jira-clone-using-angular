@@ -1,0 +1,45 @@
+.card-wrapper{
+    width: 100%;
+    margin: 5px;
+}
+
+.issue-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    box-shadow: 0px 1px 2px rgba($color: #000000, $alpha: 0.5);
+    cursor: -webkit-grab;
+    &:hover{
+        @apply bg-gray-300 rounded-sm;
+    }
+
+    .title{
+        padding: 5px;
+    }
+    
+    .detail{
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        &__left{
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: row;
+            margin-right: 10px;
+        }
+
+        &__right{
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: row;
+        }
+    }
+
+}
+
+:host{
+    display: flex;
+    flex: 1;
+}
+

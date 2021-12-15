@@ -1,0 +1,36 @@
+<div class="sidebar" [ngStyle]="expanded ? { width: '20px' } : { width: '240px' }">
+  <div class="sidebar-content">
+    <div class="header">
+      <div class="logo">
+        <!-- <img class="logo__image" src="../../../../../assets/Vector/angular-icon.svg" alt="Angular" /> -->
+      </div>
+      <div class="project-name">
+        <h2 class="text-lg font-medium">Angular Jira Clone</h2>
+        <p>Software Project</p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="list-item">
+        <div *ngFor="let item of items; index as i">
+          <a *ngIf="item.path" [routerLink]="item.path" routerLinkActive="active" class="item">
+            <div class="item__logo">
+              <!-- <i nz-icon [nzType]="item.icon" nzTheme="outline"></i> -->
+            </div>
+            <div class="item__title">
+              <span>{{ item.title }}</span>
+            </div>
+          </a>
+          <a *ngIf="!item.path" class="item not-allowed">
+            <div class="item__logo">
+              <!-- <i nz-icon [nzType]="item.icon" nzTheme="outline"></i> -->
+            </div>
+            <div class="item__title">
+              <span>{{ item.title }}</span>
+            </div>
+          </a>
+          <nz-divider class="divider" *ngIf="i === 1"></nz-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

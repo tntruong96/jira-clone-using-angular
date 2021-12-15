@@ -1,0 +1,21 @@
+<nz-select class="w-full" [formControl]="control" [nzCustomTemplate]="defaultTemplate">
+  <nz-option [nzValue]="issue.value" nzCustomContent *ngFor="let issue of issueTypes">
+    <div class="flex flex-row items-center">
+      <hero-icon [name]="issue.icon"></hero-icon>
+      <span class="uppercase pl-2 font-semibold text-13">{{ issue.value }}</span>
+    </div>
+  </nz-option>
+  <nz-option nzHide nzCustomContent>
+    <div class="flex flex-row items-center">
+      <hero-icon [name]="getIssueTypeIcon(control.value)"></hero-icon>
+      <span class="uppercase pl-2 font-semibold text-13">{{ control.value.value }}</span>
+    </div>
+  </nz-option>
+</nz-select>
+
+<ng-template #defaultTemplate let-selected>
+  <div class="flex flex-row items-center">
+    <hero-icon [name]="getIssueTypeIcon(selected.nzValue)"></hero-icon>
+    <div class="uppercase pl-2 font-semibold text-13">{{ selected.nzValue }}</div>
+  </div>
+</ng-template>
