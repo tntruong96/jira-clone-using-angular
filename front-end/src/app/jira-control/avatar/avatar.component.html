@@ -1,1 +1,5 @@
-<div *ngIf="linkAvatar" [ngClass]="['avatar-container', className]" [ngStyle]="style"></div>
+<div
+  *ngIf="linkAvatar"
+  [ngClass]="['avatar-container', outline ? 'shadow-outline-white' : '', className]"
+  [ngStyle]="style"
+></div>

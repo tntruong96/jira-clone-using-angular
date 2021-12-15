@@ -4,8 +4,8 @@ export interface JIssue {
   type: IssueTypeValue;
   priority: IssuePriorityValue;
   status: IssueStatus;
-  createdDate: string;
-  updatedDate: string;
+  createdAt: string;
+  updatedAt: string;
   listPosition: number;
   description: string;
   estimate: number;
@@ -57,11 +57,4 @@ export const IssuePriorityColor = {
   [IssuePriorityValue.MEDIUM]: '#E97F33',
   [IssuePriorityValue.LOW]: '#2D8738',
   [IssuePriorityValue.LOWEST]: '#57A55A'
-};
-
-export const ListPosition = {
-  [IssueStatus.BACKLOG]: 1,
-  [IssueStatus.SELECTED]: 2,
-  [IssueStatus.IN_PROGRESS]: 3,
-  [IssueStatus.DONE]: 4
 };

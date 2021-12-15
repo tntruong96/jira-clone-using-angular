@@ -1,0 +1,22 @@
+<div>
+  <app-button [class]="'btn-empty'">
+    <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="dropdown" class="flex items-center">
+      <hero-icon [name]="getTypeIcon(issue.type)"></hero-icon>
+      <span class="ml-1 uppercase">{{ issue.type }}-{{ issue.id }}</span>
+    </div>
+  </app-button>
+
+  <nz-dropdown-menu #dropdown="nzDropdownMenu">
+    <ul nz-menu>
+      <li
+        class="uppercase"
+        nz-menu-item
+        *ngFor="let item of listItem"
+        (click)="handleChangeType(item)"
+      >
+        <hero-icon [name]="getTypeIcon(item)"></hero-icon>
+        <span class="uppercase">{{ item }}</span>
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+</div>

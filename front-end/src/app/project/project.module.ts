@@ -33,6 +33,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BoardDndListComponent } from './components/board-dnd/board-dnd-list/board-dnd-list.component';
 import { BoardDndComponent } from './components/board-dnd/board-dnd.component';
 import { QuillModule } from 'ngx-quill';
+import { IssueTypeComponent } from './components/issues/issue-type/issue-type.component';
+import { IssueDetailComponent } from './components/issues/issue-detail/issue-detail.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { IssueDescriptionComponent } from './components/issues/issue-description/issue-description.component';
+import { IssueStatusComponent } from './components/issues/issue-status/issue-status.component';
+import { IssueReporterComponent } from './components/issues/issue-reporter/issue-reporter.component';
+import { IssuePriorityComponent } from './components/issues/issue-priority/issue-priority.component';
 
 const NzModules = [
   NzIconModule,
@@ -41,7 +49,8 @@ const NzModules = [
   NzModalModule,
   NzPopoverModule,
   NzDividerModule,
-  NzSelectModule
+  NzSelectModule,
+  NzDropDownModule
 ];
 
 @NgModule({
@@ -65,7 +74,13 @@ const NzModules = [
     IssueReporterSelectComponent,
     UserComponent,
     BoardDndListComponent,
-    BoardDndComponent
+    BoardDndComponent,
+    IssueTypeComponent,
+    IssueDetailComponent,
+    IssueDescriptionComponent,
+    IssueStatusComponent,
+    IssueReporterComponent,
+    IssuePriorityComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +91,8 @@ const NzModules = [
     FormsModule,
     ReactiveFormsModule,
     HeroIconsModule.withIcons({ arrowDown, arrowUp, check, xCircle, bookmark }),
-    QuillModule
+    QuillModule,
+    TextFieldModule
   ]
 })
 export class ProjectModule {}

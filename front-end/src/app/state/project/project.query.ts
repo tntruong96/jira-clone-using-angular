@@ -29,4 +29,13 @@ export class ProjectQuery extends Query<ProjectState> {
       })
     );
   };
+
+  issueById$ = (id: string): Observable<JIssue> => {
+    return this.issues$.pipe(
+      map((issue) => {
+        let findingIssue = issue.find((x) => x.id === id);
+        return findingIssue;
+      })
+    );
+  };
 }

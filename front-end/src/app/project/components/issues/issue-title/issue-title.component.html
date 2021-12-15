@@ -1,1 +1,7 @@
-<textarea class="textarea" name="name" id="name" cols="30" rows="10"></textarea>
+<textarea
+  class="textarea-inline-control"
+  [rows]="1"
+  cdkTextareaAutosize
+  [formControl]="controlValue"
+  (blur)="onBlur()"
+></textarea>

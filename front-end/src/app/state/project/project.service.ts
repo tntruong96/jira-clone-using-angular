@@ -45,7 +45,7 @@ export class ProjectService {
   }
 
   updateIssues(issue: JIssue) {
-    issue.updatedDate = new Date().toISOString();
+    issue.updatedAt = new Date().toISOString();
     this._store.update((state) => {
       const issues = arrayUpsert(state.issues, issue.id, issue);
       return {

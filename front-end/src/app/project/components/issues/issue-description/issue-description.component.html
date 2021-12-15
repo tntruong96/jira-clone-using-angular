@@ -1,0 +1,21 @@
+<div
+  class="description"
+  (click)="isClicked()"
+  *ngIf="!change; else quill"
+  [innerHTML]="issue.description"
+></div>
+
+<ng-template #quill>
+  <div>
+    <quill-editor [formControl]="descriptionValue"></quill-editor>
+    <div class="flex mt-1">
+      <app-button [class]="'btn-primary'" (click)="updateIssue()" [title]="'Update'"></app-button>
+      <app-button
+        class="ml-2"
+        [class]="'btn-danger'"
+        (click)="isClicked()"
+        [title]="'Cancel'"
+      ></app-button>
+    </div>
+  </div>
+</ng-template>
