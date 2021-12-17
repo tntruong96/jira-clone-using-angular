@@ -12,7 +12,7 @@
 
   <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-      <li nz-menu-item (click)="handleChangeStatus(item)" *ngFor="let item of listItem">
+      <li nz-menu-item (click)="handleChangeStatus(item)" *ngFor="let item of filterList">
         {{ item }}
       </li>
     </ul>

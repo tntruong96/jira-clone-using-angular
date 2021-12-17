@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { IssuePriorityValue, JIssue } from '@app/interface/issue';
 import { IssuePriority } from '@app/interface/issue-priority';
 import { ProjectService } from '@app/state/project/project.service';
@@ -8,7 +8,7 @@ import { ProjectService } from '@app/state/project/project.service';
   templateUrl: './issue-priority.component.html',
   styleUrls: ['./issue-priority.component.scss']
 })
-export class IssuePriorityComponent implements OnInit {
+export class IssuePriorityComponent implements OnInit, OnChanges {
   @Input() issue: JIssue;
 
   listPriority;
@@ -17,19 +17,23 @@ export class IssuePriorityComponent implements OnInit {
   }
 
   constructor(private _projectService: ProjectService) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    const issueChange = changes.issue;
+    if (issueChange.currentValue !== issueChange.previousValue) {
+      setTimeout(() => this.filterSelectedPriority(), 500);
+    }
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  filterSelectedPriority = () => {
     this.listPriority = [
       new IssuePriority(IssuePriorityValue.LOWEST),
       new IssuePriority(IssuePriorityValue.LOW),
       new IssuePriority(IssuePriorityValue.MEDIUM),
       new IssuePriority(IssuePriorityValue.HIGH),
       new IssuePriority(IssuePriorityValue.HIGHEST)
-    ];
-  }
-
-  isSelectedPriority = (selectedPriority) => {
-    return this.issue.priority === selectedPriority;
+    ].filter((priority) => priority.value !== this.issue.priority);
   };
 
   updateIssue = (priority) => {

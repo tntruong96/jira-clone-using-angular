@@ -1,5 +1,5 @@
-<article class="container flex p-12">
-  <section class="w-full flex-initial m-2">
+<article class="container flex flex-col md:flex-row p-12">
+  <section class="w-full md flex-initial m-2">
     <app-issue-type class="mb-1" [issue]="issueDetail"></app-issue-type>
     <app-issue-title class="m-2" [issue]="issueDetail"></app-issue-title>
     <app-issue-description [issue]="issueDetail"></app-issue-description>
@@ -11,6 +11,10 @@
       [issue]="issueDetail"
       [users]="projectQuery.user$ | async"
     ></app-issue-reporter>
+    <app-issue-assignees
+      [users]="projectQuery.user$ | async"
+      [issue]="issueDetail"
+    ></app-issue-assignees>
     <app-issue-priority class="m-1" [issue]="issueDetail"></app-issue-priority>
     <nz-divider></nz-divider>
     <div class="flex flex-col">

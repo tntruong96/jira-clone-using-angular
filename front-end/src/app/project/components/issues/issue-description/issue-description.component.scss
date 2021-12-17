@@ -1,5 +1,6 @@
 .description{
     &:hover{
-        @apply bg-blue-100
+        @apply bg-blue-100;
+        cursor: text;
     }
 }

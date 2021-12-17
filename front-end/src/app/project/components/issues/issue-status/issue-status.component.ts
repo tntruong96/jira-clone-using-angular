@@ -17,9 +17,15 @@ export class IssueStatusComponent implements OnInit, OnChanges {
     IssueStatus['IN_PROGRESS'],
     IssueStatus['SELECTED']
   ];
+
+  filterList;
   constructor(private _projectService: ProjectService) {}
   ngOnChanges(changes: SimpleChanges): void {
-    this.valueBtn();
+    const issueChange = changes.issue;
+    if (issueChange.currentValue !== issueChange.previousValue) {
+      this.valueBtn();
+      setTimeout(() => this.filterBtnValue(), 500);
+    }
   }
 
   ngOnInit(): void {}
@@ -35,6 +41,10 @@ export class IssueStatusComponent implements OnInit, OnChanges {
       default:
         this.classBtn = 'btn-secondary';
     }
+  };
+
+  filterBtnValue = () => {
+    this.filterList = this.listItem.filter((item) => item !== this.issue.status);
   };
 
   handleChangeStatus = (status: IssueStatus) => {

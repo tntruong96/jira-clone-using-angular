@@ -2,6 +2,7 @@
   class="textarea-inline-control"
   [rows]="1"
   cdkTextareaAutosize
+  #autosize="cdkTextareaAutosize"
   [formControl]="controlValue"
   (blur)="onBlur()"
 ></textarea>

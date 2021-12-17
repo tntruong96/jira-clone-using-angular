@@ -1,0 +1,39 @@
+<div class="flex flex-col">
+  <label class="font-semibold" for="assignees">ASSIGNEES</label>
+
+  <div class="flex flex-wrap">
+    <app-button
+      class="mr-1 mb-1"
+      [class]="'btn-secondary'"
+      *ngFor="let assigneeId of listChoseAssignees; index as i"
+    >
+      <div class="flex items-center">
+        <app-avatar [linkAvatar]="getDetailAssignee(assigneeId).avatarUrl" [size]="25"></app-avatar>
+        <span class="ml-1">{{ getDetailAssignee(assigneeId).name }}</span>
+        <hero-icon (click)="removeAssignee(assigneeId)" name="x"></hero-icon>
+      </div>
+    </app-button>
+  </div>
+
+  <a
+    nz-dropdown
+    nzTrigger="click"
+    [nzDropdownMenu]="menu"
+    class="flex items-center link"
+    href="JavaScript:void(0);"
+  >
+    <hero-icon name="plus"></hero-icon>
+    <span>Add Assignee</span>
+  </a>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li (click)="chooseAssignee(assignee.id)" nz-menu-item *ngFor="let assignee of filterList">
+        <div class="flex items-center">
+          <app-avatar [linkAvatar]="assignee.avatarUrl" [size]="25"></app-avatar>
+          <span class="ml-1">{{ assignee.name }}</span>
+        </div>
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+</div>

@@ -15,7 +15,7 @@
 
   <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-      <li nz-menu-item (click)="handleUpdateIssue(user.id)" *ngFor="let user of users">
+      <li nz-menu-item (click)="handleUpdateIssue(user.id)" *ngFor="let user of filterUsers">
         <div class="flex items-center">
           <app-avatar [linkAvatar]="user.avatarUrl" [size]="30"></app-avatar>
           <span class="ml-1">{{ user.name }}</span>

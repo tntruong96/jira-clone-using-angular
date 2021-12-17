@@ -26,7 +26,17 @@ import { IssueTypeSelectComponent } from './components/add-issues-modal/issue-ty
 import { IssuePrioritySelectComponent } from './components/add-issues-modal/issue-priority-select/issue-priority-select.component';
 import { IssueAssigneesSelectComponent } from './components/add-issues-modal/issue-assignees-select/issue-assignees-select.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { HeroIconsModule, arrowDown, arrowUp, xCircle, check, bookmark } from 'ng-heroicons';
+import {
+  HeroIconsModule,
+  arrowDown,
+  arrowUp,
+  xCircle,
+  check,
+  bookmark,
+  plus,
+  x,
+  search
+} from 'ng-heroicons';
 import { IssueReporterSelectComponent } from './components/add-issues-modal/issue-reporter-select/issue-reporter-select.component';
 import { UserComponent } from './components/issues/user/user.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -41,6 +51,8 @@ import { IssueDescriptionComponent } from './components/issues/issue-description
 import { IssueStatusComponent } from './components/issues/issue-status/issue-status.component';
 import { IssueReporterComponent } from './components/issues/issue-reporter/issue-reporter.component';
 import { IssuePriorityComponent } from './components/issues/issue-priority/issue-priority.component';
+import { IssueAssigneesComponent } from './components/issues/issue-assignees/issue-assignees.component';
+import { BoardFilterComponent } from './components/board-dnd/board-filter/board-filter.component';
 
 const NzModules = [
   NzIconModule,
@@ -80,7 +92,9 @@ const NzModules = [
     IssueDescriptionComponent,
     IssueStatusComponent,
     IssueReporterComponent,
-    IssuePriorityComponent
+    IssuePriorityComponent,
+    IssueAssigneesComponent,
+    BoardFilterComponent
   ],
   imports: [
     CommonModule,
@@ -90,7 +104,7 @@ const NzModules = [
     JiraControlModule,
     FormsModule,
     ReactiveFormsModule,
-    HeroIconsModule.withIcons({ arrowDown, arrowUp, check, xCircle, bookmark }),
+    HeroIconsModule.withIcons({ arrowDown, arrowUp, check, xCircle, bookmark, plus, x, search }),
     QuillModule,
     TextFieldModule
   ]

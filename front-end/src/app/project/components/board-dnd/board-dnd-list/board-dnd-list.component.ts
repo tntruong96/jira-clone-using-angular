@@ -1,9 +1,12 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { IssueStatus, JIssue } from '@app/interface/issue';
+import { IssueUtil } from '@app/project/util/issue-util';
+import { FilterQuery } from '@app/state/filter/filter.query';
+import { FilterSate } from '@app/state/filter/filter.store';
 import { ProjectService } from '@app/state/project/project.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 
 @Component({
   selector: '[app-board-dnd-list]',
@@ -18,13 +21,19 @@ export class BoardDndListComponent implements OnInit {
   count;
 
   issuesData: JIssue[];
-  constructor(private _projectService: ProjectService) {}
+  constructor(private _projectService: ProjectService, private _filterQuery: FilterQuery) {}
 
   ngOnInit(): void {
     this.issues$.pipe(untilDestroyed(this)).subscribe((data) => {
       this.issuesData = data;
       this.count = data.length;
     });
+    combineLatest(this.issues$, this._filterQuery.all$)
+      .pipe(untilDestroyed(this))
+      .subscribe(([issues, searchTerm]) => {
+        this.issuesData = this.filterIssue(issues, searchTerm);
+        console.log(this.issuesData);
+      });
   }
 
   drop = (event: CdkDragDrop<JIssue[]>) => {
@@ -52,6 +61,15 @@ export class BoardDndListComponent implements OnInit {
     const newIssues = issues.map((issue, idx) => {
       const newIssuePosition = { ...issue, listPosition: idx + 1 };
       this._projectService.updateIssues(newIssuePosition);
+    });
+  };
+
+  filterIssue = (issues: JIssue[], search: FilterSate) => {
+    const { searchTerm } = search;
+    return issues.filter((issue) => {
+      let searchByTerm = search ? IssueUtil.searchString(searchTerm, issue.title) : true;
+
+      return searchByTerm;
     });
   };
 }

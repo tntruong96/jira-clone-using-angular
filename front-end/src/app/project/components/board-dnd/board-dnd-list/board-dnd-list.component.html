@@ -7,12 +7,7 @@
     (cdkDropListDropped)="drop($event)"
     [id]="status"
   >
-    <app-issue-card
-      cdkDrag
-      [cdkDragData]="issue"
-      *ngFor="let issue of issues$ | async"
-      [issue]="issue"
-    >
+    <app-issue-card cdkDrag [cdkDragData]="issue" *ngFor="let issue of issuesData" [issue]="issue">
     </app-issue-card>
   </div>
 </div>
