@@ -32,7 +32,6 @@ export class BoardDndListComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe(([issues, searchTerm]) => {
         this.issuesData = this.filterIssue(issues, searchTerm);
-        console.log(this.issuesData);
       });
   }
 
