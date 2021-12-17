@@ -1,9 +1,15 @@
-<div class="flex container mt-7 h-full" cdkDropListGroup>
-  <div
-    class="board-dnd-list"
-    app-board-dnd-list
-    [status]="status"
-    *ngFor="let status of issueStatuses"
-    [issues$]="projectQuery.issueByStatusSorted$(status)"
-  ></div>
+<div class="mt-5">
+  <h1 class="uppercase font-normal text-xl">Kanban Board</h1>
+  <div class="flex flex-col mt-4">
+    <app-board-filter></app-board-filter>
+    <div class="flex container mt-7 h-full" cdkDropListGroup>
+      <div
+        class="board-dnd-list"
+        app-board-dnd-list
+        [status]="status"
+        *ngFor="let status of issueStatuses"
+        [issues$]="projectQuery.issueByStatusSorted$(status)"
+      ></div>
+    </div>
+  </div>
 </div>

@@ -19,4 +19,11 @@ export class IssueUtil {
   static randomIssueId = () => {
     return Math.ceil(Math.random() * 90000).toString();
   };
+
+  static searchString = (search: string, title: string): boolean => {
+    let searchTerm = search ?? '';
+    let titleIssue = title ?? '';
+
+    return titleIssue.trim().toLowerCase().includes(searchTerm.trim().toLowerCase());
+  };
 }

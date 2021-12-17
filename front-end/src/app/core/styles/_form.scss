@@ -35,16 +35,17 @@ form {
     border-color: transparent;
     padding: 7px 7px 8px;
     line-height: 1.28;
-    resize: none;
+    resize: none !important;
     box-shadow: transparent 0px 0px 0px 1px;
     transition: background 0.1s ease 0s;
     overflow: auto;
     overflow-y: hidden;
-    width: 100%;
     border-radius: 3px;
     appearance: none;
+    width: 100% !important;
+    height: auto !important;
   
-    @apply w-full h-auto text-textDarkest;
+    @apply text-textDarkest;
   
     &:hover:not(:focus) {
       @apply bg-backgroundLight;

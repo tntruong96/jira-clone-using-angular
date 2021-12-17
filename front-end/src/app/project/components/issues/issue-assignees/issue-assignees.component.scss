@@ -1,0 +1,6 @@
+.link{
+    @apply text-textLink;
+    &:hover{
+        text-decoration: underline;
+    }
+}

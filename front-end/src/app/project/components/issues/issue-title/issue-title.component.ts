@@ -1,4 +1,3 @@
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { JIssue } from '@app/interface/issue';

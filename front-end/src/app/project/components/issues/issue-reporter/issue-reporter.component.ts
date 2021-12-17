@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { JIssue } from '@app/interface/issue';
 import { JUser } from '@app/interface/user';
 import { ProjectService } from '@app/state/project/project.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-issue-reporter',
@@ -14,6 +13,7 @@ export class IssueReporterComponent implements OnInit, OnChanges {
   @Input() users: JUser[];
 
   currentUser: JUser;
+  filterUsers: JUser[];
   constructor(private _projectService: ProjectService) {}
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -21,15 +21,21 @@ export class IssueReporterComponent implements OnInit, OnChanges {
       changes.issue.currentValue.reporterId !== changes.issue.previousValue.reporterId
     ) {
       this.findUser();
+      setTimeout(() => this.filterUser(), 500);
     }
   }
 
   ngOnInit(): void {
     this.findUser();
+    this.filterUser();
   }
 
   findUser = () => {
     this.currentUser = this.users.find((u) => u.id === this.issue.reporterId);
+  };
+
+  filterUser = () => {
+    this.filterUsers = this.users.filter((user) => user.id !== this.currentUser.id);
   };
 
   handleUpdateIssue = (reporterId) => {
